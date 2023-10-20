@@ -20,9 +20,10 @@ build_analyzer_func = \
 			LLVM_INCLUDE_DIRS=${LLVM_BUILD}/include \
 			CC=clang CXX=clang++ \
 			cmake ${1}	\
-				-DCMAKE_BUILD_TYPE=Release \
+				-DCMAKE_BUILD_TYPE=Debug \
 				-DLLVM_ENABLE_ASSERTIONS=ON \
 				-DCMAKE_CXX_FLAGS_RELEASE="-std=c++14 -fno-rtti -fpic -g" \
+				-DCMAKE_CXX_FLAGS_DEBUG="-std=c++14 -fno-rtti -fpic -g" \
 		&& make -j${NPROC})
 
 all: kanalyzer

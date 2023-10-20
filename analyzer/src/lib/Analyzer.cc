@@ -127,6 +127,22 @@ int main(int argc, char **argv) {
 	SMDiagnostic Err;
 
 	// Loading modules
+  	if(InputFilenames.size() == 1 ){
+		std::string inF = InputFilenames[0];
+		int len = inF.length();
+		InputFilenames.clear();
+		if(len >=4 && inF[len-4] == 'l' && inF[len-3] == 'i' && inF[len-2] == 's' && inF[len-1] == 't') {
+			OP << "Loading list of files...\n";
+			std::ifstream listFile(inF.c_str());
+			if(listFile.is_open()) {
+				std::string line;
+				while(getline(listFile, line)) {
+					InputFilenames.push_back(line);
+				}
+			}
+			listFile.close();
+		}	
+	}
 	OP << "Total " << InputFilenames.size() << " file(s)\n";
 
 	for (unsigned i = 0; i < InputFilenames.size(); ++i) {

@@ -30,7 +30,7 @@
 // 2: default error codes + <-4095, -1> + NULL pointer
 #define ERRNO_TYPE 	2
 
-//#define DEBUG_PRINT
+#define DEBUG_PRINT
 //#define TEST_CASE
 
 // Refine the assembly functions to detect more SecurityChecks
@@ -1061,7 +1061,7 @@ void SecurityChecksPass::checkErrValueFlow(
 #ifdef DEBUG_PRINT
 		OP << "== Warning: unsupported LLVM IR:"
 			<< *V << '\n';
-		assert(0);
+		// assert(0);
 #endif
 
 	}
